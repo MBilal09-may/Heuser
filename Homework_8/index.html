@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Bilal Qadri | Eldritch-Cyber Arcade Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background Canvas for Interactive HUD Starfield / Radar grid -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- CRT Scanlines and Vignette Overlays -->
+  <div class="crt-overlay"></div>
+  <div class="scanline"></div>
+
+  <!-- Main HUD Interface -->
+  <main class="hud-container">
+    <!-- Top Telemetry Header-less HUD Status Bar -->
+    <header class="hud-topbar" role="banner">
+      <div class="system-status">
+        <span class="pulse-indicator"></span>
+        <span class="system-text">SYS.ONLINE // PROTOCOL: ELDRITCH_ARCADE_v9.2</span>
+      </div>
+      <button class="audio-toggle-hint" id="audio-status" aria-label="Toggle audio synth SFX">
+        <span id="audio-status-text">AUDIO: SYNTH_ONLINE [CLICK OR 'M']</span>
+      </button>
+      <div class="telemetry">
+        <span id="clock-display">00:00:00 UTC</span>
+        <span class="badge">FPS: <span id="fps-display">60</span></span>
+      </div>
+    </header>
+
+    <!-- Center Interactive Console: Left Panel (Status/Radar), Center (Cabinet Grid), Right (Data Terminal) -->
+    <div class="hud-content">
+      <!-- Left Radar & Identity Module -->
+      <section class="hud-panel left-panel">
+        <div class="panel-header">PILOT IDENTITY</div>
+        <div class="profile-frame">
+          <div class="avatar-frame">
+            <img id="pilot-avatar-img" class="pilot-avatar-img" src="profile-photo.jpg" alt="Muhammad Bilal Qadri" onerror="this.classList.add('img-fallback')" />
+            <div class="avatar-placeholder" id="avatar-fallback-icon">MBQ</div>
+            <div class="avatar-scanline"></div>
+            <div class="avatar-beacon"></div>
+          </div>
+          <div class="pilot-info">
+            <h1 id="owner-name" class="glitch-text" data-text="Muhammad Bilal Qadri">Muhammad Bilal Qadri</h1>
+            <p id="owner-tagline" class="subtext">MBilal09-may // FULL-STACK &amp; ML</p>
+          </div>
+        </div>
+
+        <div class="hud-divider"></div>
+
+        <div class="panel-header">TACTICAL RADAR</div>
+        <div class="radar-box">
+          <canvas id="radar-canvas" width="160" height="160"></canvas>
+          <div class="radar-scanline"></div>
+        </div>
+
+        <div class="stats-box">
+          <div class="stat-row">
+            <span>SYS_INTEGRITY</span>
+            <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+          </div>
+          <div class="stat-row">
+            <span>ML_BUFFER</span>
+            <div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
+          </div>
+          <div class="stat-row">
+            <span>TARGET_LOCK</span>
+            <div class="progress-bar"><div class="progress-fill crimson" style="width: 100%;"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Center Arcade Project Nodes -->
+      <section class="hud-panel center-panel">
+        <div class="panel-header-row">
+          <span class="panel-header">MISSION MATRIX // ACTIVE NODES</span>
+          <span class="control-legend">USE [W][A][S][D] / ARROWS TO NAVIGATE &bull; [ENTER] / CLICK TO LAUNCH</span>
+        </div>
+
+        <!-- Dynamic Container for Projects -->
+        <div class="nodes-grid" id="nodes-grid"></div>
+
+        <!-- Launch status banner -->
+        <div class="hud-banner" id="hud-status-banner">STATUS: STANDBY // SELECT MISSION NODE</div>
+      </section>
+
+      <!-- Right Project Inspector & Terminal Output -->
+      <section class="hud-panel right-panel">
+        <div class="panel-header">TACTICAL DOSSIER // INSPECT</div>
+        <div class="dossier-screen" id="dossier-screen">
+          <div class="dossier-id" id="dossier-id">TARGET IDENT: [NODE-01]</div>
+          <h2 class="dossier-title" id="dossier-title">INITIALIZING TELEMETRY...</h2>
+          <div class="dossier-tags" id="dossier-tags">
+            <span class="tag">TARGET: READY</span>
+          </div>
+          <p class="dossier-desc" id="dossier-desc">
+            Highlight or hover over a mission card in the matrix to stream decrypted telemetry data...
+          </p>
+
+          <div class="launch-action-zone">
+            <button class="launch-btn" id="launch-btn">
+              <span class="btn-bracket">[</span>
+              <span class="btn-text">INITIALIZE DEPLOYMENT</span>
+              <span class="btn-bracket">]</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hud-divider"></div>
+
+        <div class="panel-header">PARADIGM MANIFESTO</div>
+        <div class="concept-dossier" id="concept-dossier">
+          <p class="concept-lead">
+            This portfolio rejects conventional web hierarchy &mdash; eliminating all standard headers, footers, navigation bars, and static cards in favor of a live, gamified tactical cockpit.
+          </p>
+          <p class="concept-body">
+            By fusing arcade mechanics, inline Web Audio synthesizers, procedural CRT scanlines, and tactile keyboard controls, it treats developer work not as passive resume bullet points, but as executable mission nodes inside an immersive Eldritch-Cyber universe.
+          </p>
+        </div>
+
+        <div class="hud-divider"></div>
+
+        <div class="panel-header">DIAGNOSTIC LOG</div>
+        <div class="terminal-log-box" id="terminal-log" role="log" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <!-- Bottom Controls HUD Bar -->
+    <section class="hud-bottombar">
+      <div class="control-item"><kbd>&uarr;&darr;&larr;&rarr;</kbd> / <kbd>WASD</kbd> TARGET SELECT</div>
+      <div class="control-item"><kbd>SPACE</kbd> / <kbd>ENTER</kbd> LAUNCH REPO</div>
+      <div class="control-item"><kbd>M</kbd> MUTE/UNMUTE SFX</div>
+      <div class="terminal-indicator">ELDRITCH-CYBER ENGINE &copy; 2026</div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
