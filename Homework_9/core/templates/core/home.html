@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HQ Command Terminal — Django Hub</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #003e1f;
+      color: #d0fef5;
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .hub-container {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .badge-bar {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8b8982;
+      border: 1px solid #8b8982;
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .hub-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #d0fef5;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .hub-tagline {
+      font-size: 1.05rem;
+      color: #8b8982;
+      margin-bottom: 40px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background-color: #d0fef5;
+      color: #003e1f;
+      padding: 28px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid transparent;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover, .card:focus-visible {
+      background-color: #d7263d;
+      color: #d0fef5;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(215, 38, 61, 0.4);
+      border-color: #d0fef5;
+      outline: none;
+    }
+
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+
+    .status-footer {
+      margin-top: 50px;
+      font-size: 0.78rem;
+      color: #8b8982;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hub-container">
+    <div class="badge-bar">SECURE TERMINAL // CLEARANCE LEVEL 4</div>
+    <h1 class="hub-title">CENTRAL DISPATCH HUB</h1>
+    <p class="hub-tagline">Integrated Django Gateway for deployed simulator systems, personnel profiles, and intelligence archives.</p>
+
+    <div class="cards-grid">
+      <a href="/game" class="card">
+        <div class="card-icon">🚀</div>
+        <div class="card-title">Play Game</div>
+        <div class="card-desc">Launch Galaxy Catch space energy harvesting simulator</div>
+      </a>
+
+      <a href="/portfolio" class="card">
+        <div class="card-icon">👾</div>
+        <div class="card-title">View Portfolio</div>
+        <div class="card-desc">Access Eldritch-Cyber arcade pilot identity & terminal</div>
+      </a>
+
+      <a href="/api" class="card">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Cinema Dossier</div>
+        <div class="card-desc">Bureau of Cinematic Affairs classified motion picture audit</div>
+      </a>
+    </div>
+
+    <div class="status-footer">
+      SYSTEM STATUS: ALL UNITS OPERATIONAL &bull; PROTOCOL 2026.09
+    </div>
+  </div>
+</body>
+</html>
